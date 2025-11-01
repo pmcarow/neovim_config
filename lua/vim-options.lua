@@ -17,3 +17,13 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true
 
 vim.keymap.set('v', '<c-c>', '"+y')
+
+-- Treat S_define and .sm files as C++
+vim.filetype.add({
+  filename = {
+    ['S_define'] = 'cpp',
+  },
+  extension = {
+    sm = 'cpp',
+  },
+})
