@@ -16,11 +16,18 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
-      lspconfig.ts_ls.setup({})
-      lspconfig.pyright.setup({})
-      lspconfig.clangd.setup({})
+      -- Use the new vim.lsp.config API (Neovim 0.11+)
+      vim.lsp.config('lua_ls', {})
+      vim.lsp.config('ts_ls', {})
+      vim.lsp.config('pyright', {})
+      vim.lsp.config('clangd', {})
+      
+      -- Enable the LSP servers
+      vim.lsp.enable('lua_ls')
+      vim.lsp.enable('ts_ls')
+      vim.lsp.enable('pyright')
+      vim.lsp.enable('clangd')
+      
       vim.keymap.set('n','K',vim.lsp.buf.hover, {})
     end
   }
